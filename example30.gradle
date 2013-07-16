@@ -1,0 +1,43 @@
+task createSchema {
+	println 'Creating Schema'
+}
+
+task finalizeSchema {
+	println 'Finalizing Schema'
+}
+
+task loadTestDataOne {
+	dependsOn << createSchema
+	println 'Loading Test Data One'
+}
+
+task loadTestDataTwo {
+	dependsOn createSchema
+	println 'Loading Test Data Two'
+}
+
+task loadTestDataThree
+loadTestDataThree.dependsOn createSchema
+loadTestDataThree {
+	println 'Loading Test Data Three'
+}
+
+task loadTestDataFour(dependsOn: createSchema) {
+	println 'Loading Test Data Four'
+}
+
+task loadTestDataFive(dependsOn: [createSchema, finalizeSchema])
+loadTestDataFive {
+	println 'Loading Test Data Five'
+}
+
+task loadTestDataSix {
+	dependsOn createSchema, finalizeSchema
+	println 'Loading Test Data Six'
+}
+
+task loadTestDataSeven {
+	dependsOn << createSchema
+	dependsOn << finalizeSchema
+	println 'Loading Test Data Seven'
+}
