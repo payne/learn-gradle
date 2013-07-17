@@ -1,0 +1,11 @@
+task setupDatabaseTests << {
+	println 'load test data'
+}
+
+setupDatabaseTests.doFirst {
+	println 'create schema'
+}
+
+setupDatabaseTests.doFirst {
+	println 'drop database schema'
+}
